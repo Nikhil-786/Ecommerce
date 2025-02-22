@@ -18,6 +18,7 @@
   justify-content: space-between;
   margin-left: 8%;
   height: 18%;
+  
 }
 .child1{
   display: flex;
@@ -27,7 +28,7 @@
 
 }
 #line{
-  width: 70%;
+  width: 48%;
   margin-bottom: 2%;
 }
 
@@ -50,6 +51,7 @@
 .secondDiv{
   display:flex;
   width: 100%;
+
 }
 
 #prd1{
@@ -79,6 +81,7 @@
 .productDetails{
   width: 50%;
   margin-right: 10%;
+  z-index: 1;
 }
 #cart{
   width: 50%;
@@ -93,7 +96,7 @@
 }
 #counter{
 display: flex;
-height: 20%;
+height: 44px;
 width:30%;
 background-color: hsl(220, 14%, 75%);
 justify-content: space-evenly;
@@ -114,4 +117,48 @@ opacity: 60%;
 .child3{
   display: flex;
   justify-content:space-evenly;
+}
+
+
+
+#countCart{
+  color: hsl(26, 100%, 55%);
+  margin-top: -8px;
+  display: inline-block;
+  border-radius: 5px;
+  margin-left:-5%;
+
+}
+.cartDetails{
+  position: absolute;
+  margin-top: 1rem;
+  width: 15%;
+  height: 15rem;
+  border-radius: 6px;
+  box-shadow: 10px 7px 10px hsl(220, 14%, 75%);
+  margin-left: -8%;
+  z-index: 4;
+  background-color: hsl(0, 0%, 100%);
+}
+#thumbimg{
+  width: 15%;
+  border-radius: 8px;
+ margin-bottom: -10%;
+ margin-left: 2px;
+
+}
+#checkout{
+  margin-top: -10%;
+  margin-left: 5%;
+  margin-bottom: 2%;
+  width: 90%;
+  background-color: hsl(26, 100%, 55%);
+}
+.pdetails{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+#cal{
+  margin-left: 15%;
 }

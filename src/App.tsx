@@ -17,8 +17,9 @@ import cart from "./images/icon-cart.svg";
 import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [productImage,setProductImages]= useState(product1);
+  const [updateCart,setUpdateCart] = useState(0);
 
   function handleToggelImages(e){
    
@@ -36,6 +37,10 @@ function App() {
       setProductImages(product4);
     }
   }
+
+  function handleCart(){
+    setUpdateCart(count);
+  }
   return (
     <>
       <div className="maindiv">
@@ -49,7 +54,7 @@ function App() {
             <label htmlFor="Contact">Contact</label>
           </div>
           <div className="child2">
-            <Cart />
+            <Cart update={updateCart} thumbnail={product1Thumbnail} text='Fall Limited Edition Sneakers' />
             <img src={Avatar} alt="avatar" id="avatar1" />
           </div>
         </div>
@@ -106,7 +111,7 @@ function App() {
                   alt="minus"
                   className="count"
                   onClick={() =>
-                    count <= 0 ? setCount(0) : setCount(count - 1)
+                    count <= 1 ? setCount(1) : setCount(count - 1)
                   }
                 />
                 <label htmlFor="count">{count}</label>
@@ -117,8 +122,8 @@ function App() {
                   onClick={() => setCount(count + 1)}
                 />
               </div>
-              <button id="cart">
-                <img src={cart} alt="" />
+              <button id="cart" onClick={handleCart}>
+                <img src={cart} alt=""  />
                 Add to cart
               </button>
             </div>

@@ -15,53 +15,121 @@ import plus from "./images/icon-plus.svg";
 import Cart from "./Cart";
 import cart from "./images/icon-cart.svg";
 import { useState } from "react";
+import next from "./images/icon-next.svg";
 
 function App() {
   const [count, setCount] = useState(1);
-  const [productImage,setProductImages]= useState(product1);
-  const [updateCart,setUpdateCart] = useState(0);
+  const images = [product1, product2, product3, product4];
+  const [imageindex, setImageIndex] = useState(0);
+  const [productImage, setProductImages] = useState(product1);
+  const [updateCart, setUpdateCart] = useState(0);
 
-  function handleToggelImages(e){
-   
-    if(e.target.id==='product1Thumbnail'){
+  function handleToggelImages(e) {
+    if (e.target.id === "product1Thumbnail") {
       setProductImages(product1);
     }
 
-    if(e.target.id==='product2Thumbnail'){
+    if (e.target.id === "product2Thumbnail") {
       setProductImages(product2);
     }
-    if(e.target.id==='product3Thumbnail'){
+    if (e.target.id === "product3Thumbnail") {
       setProductImages(product3);
     }
-    if(e.target.id==='product4Thumbnail'){
+    if (e.target.id === "product4Thumbnail") {
       setProductImages(product4);
     }
   }
 
-  function handleCart(){
+  function handleCart() {
     setUpdateCart(count);
   }
+
+  function handlepopUp() {
+    const popUp = document.querySelector(".modal");
+    popUp?.classList.add("appear");
+  }
+
+  function handleClose() {
+    const popUp = document.querySelector(".modal");
+    popUp?.classList.remove("appear");
+  }
+
+  function handleNextImg() {
+    setImageIndex((index) => {
+    
+      if (index === images.length - 1) {
+        return images.length - 1;
+      } else {
+        return index + 1;
+      }
+    });
+  }
+
+  function handlePrevtImg() {
+    setImageIndex((index) => {
+      if (index === 0) {
+        return images.length - 1;
+      } else {
+        return index - 1;
+      }
+    });
+  }
+
   return (
     <>
+      <div className="modal">
+        <span className="close" onClick={handleClose}>
+          <strong>X</strong>
+        </span>
+        <div className="modalContent">
+          <span className="leftarrow" onClick={handlePrevtImg}>
+            <img src={next} alt="Thumbnail" className="left" />
+          </span>
+
+          <img src={images[imageindex]} alt="product" className="modalImg" />
+          <span className="rightarrow" onClick={handleNextImg}>
+            <img src={next} alt="Thumbnail" className="right" />
+          </span>
+        </div>
+      </div>
       <div className="maindiv">
         <div className="firsDiv">
+          <img src={logo} alt="logo" id="logoId" />
           <div className="child1">
-            <img src={logo} alt="logo" id="logoId" />
-            <label htmlFor="Collections">Collections</label>
-            <label htmlFor="men">Men</label>
-            <label htmlFor="Women">Women</label>
-            <label htmlFor="About">About</label>
-            <label htmlFor="Contact">Contact</label>
+            <label htmlFor="Collections" id="collection">
+              Collections
+            </label>
+            <label htmlFor="men" id="men">
+              Men
+            </label>
+            <label htmlFor="Women" id="women">
+              Women
+            </label>
+            <label htmlFor="About" id="About">
+              About
+            </label>
+            <label htmlFor="Contact" id="Contact">
+              Contact
+            </label>
           </div>
           <div className="child2">
-            <Cart update={updateCart} thumbnail={product1Thumbnail} text='Fall Limited Edition Sneakers' />
+            <Cart
+              update={updateCart}
+              thumbnail={product1Thumbnail}
+              text="Fall Limited Edition Sneakers"
+            />
             <img src={Avatar} alt="avatar" id="avatar1" />
           </div>
         </div>
         <hr id="line" />
         <div className="secondDiv">
-          <div id="products" onClick={(e)=>handleToggelImages(e)}>
-            <img src={productImage} alt="product1" id="prd1" />
+          <div id="products" onClick={(e) => handleToggelImages(e)}>
+            <img
+              src={productImage}
+              alt="product1"
+              id="prd1"
+              onClick={handlepopUp}
+            />
             <br />
             &nbsp;
             <img
@@ -89,7 +157,7 @@ function App() {
               src={product4Thumbnail}
               alt="product1Thumbnail"
               className="thumbnail"
-               id="product4Thumbnail"
+              id="product4Thumbnail"
             />
           </div>
           <div className="productDetails">
@@ -123,7 +191,7 @@ function App() {
                 />
               </div>
               <button id="cart" onClick={handleCart}>
-                <img src={cart} alt=""  />
+                <img src={cart} alt="" />
                 Add to cart
               </button>
             </div>

@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Kumbh Sans", serif;
 }
 
 .maindiv {
@@ -54,7 +55,7 @@
 }
 
 #prd1 {
-  height: 95%;
+  height: 80%;
   width: 80%;
   border-radius: 10px;
 }

@@ -1,7 +1,7 @@
 import cart from "./images/icon-cart.svg";
 import "./App.css";
 import { useState } from "react";
-const Cart = ({ update, thumbnail, text }) => {
+const Cart = ({ update, thumbnail}:{update:number,thumbnail:string}) => {
   const [active, setActive] = useState(false);
   function handleShowCart() {
     setActive(true);

@@ -24,18 +24,19 @@ function App() {
   const [productImage, setProductImages] = useState(product1);
   const [updateCart, setUpdateCart] = useState(0);
 
-  function handleToggelImages(e) {
-    if (e.target.id === "product1Thumbnail") {
+  function handleToggelImages(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    const target = e.target as HTMLElement;
+    if (target.id === "product1Thumbnail") {
       setProductImages(product1);
     }
 
-    if (e.target.id === "product2Thumbnail") {
+    if (target.id === "product2Thumbnail") {
       setProductImages(product2);
     }
-    if (e.target.id === "product3Thumbnail") {
+    if (target.id === "product3Thumbnail") {
       setProductImages(product3);
     }
-    if (e.target.id === "product4Thumbnail") {
+    if (target.id === "product4Thumbnail") {
       setProductImages(product4);
     }
   }
@@ -56,7 +57,6 @@ function App() {
 
   function handleNextImg() {
     setImageIndex((index) => {
-    
       if (index === images.length - 1) {
         return images.length - 1;
       } else {
@@ -113,11 +113,7 @@ function App() {
             </label>
           </div>
           <div className="child2">
-            <Cart
-              update={updateCart}
-              thumbnail={product1Thumbnail}
-              text="Fall Limited Edition Sneakers"
-            />
+            <Cart update={updateCart} thumbnail={product1Thumbnail} />
             <img src={Avatar} alt="avatar" id="avatar1" />
           </div>
         </div>
